@@ -74,26 +74,7 @@ void loop()
 
 void set_rgb_led(colorData rgb)
 {
-    if (rEnabled) {
-      analogWrite(R_OUT, 255 - rgb.value[TCS230_RGB_R]);
-    }
-    else {
-      analogWrite(R_OUT, 255);
-    }
-
-
-    if (gEnabled) {
-      analogWrite(G_OUT, 255 - rgb.value[TCS230_RGB_G]);
-    }
-    else {
-      analogWrite(G_OUT, 255);
-    }
-
-
-    if (bEnabled) {
-      analogWrite(B_OUT, 255 - rgb.value[TCS230_RGB_B]);
-    }
-    else {
-      analogWrite(B_OUT, 255);
-    }
+    analogWrite(R_OUT, 255 - rEnabled * rgb.value[TCS230_RGB_R]);
+    analogWrite(G_OUT, 255 - gEnabled * rgb.value[TCS230_RGB_G]);
+    analogWrite(B_OUT, 255 - bEnabled * rgb.value[TCS230_RGB_B]);
 }
