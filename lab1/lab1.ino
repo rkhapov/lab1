@@ -32,14 +32,14 @@ void setup()
     Serial.println("Started!");
 
     sensorData whiteCalibration;
-    whiteCalibration.value[TCS230_RGB_R] = 0;
-    whiteCalibration.value[TCS230_RGB_G] = 0;
-    whiteCalibration.value[TCS230_RGB_B] = 0;
-
+    whiteCalibration.value[TCS230_RGB_R] = 192700;
+    whiteCalibration.value[TCS230_RGB_G] = 168080;
+    whiteCalibration.value[TCS230_RGB_B] = 216130;
+    
     sensorData blackCalibration;
-    blackCalibration.value[TCS230_RGB_R] = 0;
-    blackCalibration.value[TCS230_RGB_G] = 0;
-    blackCalibration.value[TCS230_RGB_B] = 0;
+    blackCalibration.value[TCS230_RGB_R] = 14650;
+    blackCalibration.value[TCS230_RGB_G] = 12190;
+    blackCalibration.value[TCS230_RGB_B] = 14690;
 
     colorSensor.begin();
     colorSensor.setDarkCal(&blackCalibration);
@@ -57,14 +57,17 @@ void loop()
     while (!colorSensor.available());
 
     if (rButton.wasPressed()){
+      Serial.println("Red reversed");
       rEnabled = !rEnabled;
     }
 
     if (gButton.wasPressed()) {
+      Serial.println("Green reversed");
       gEnabled = !gEnabled;
     }
 
     if (bButton.wasPressed()){
+      Serial.println("Blue reversed");
       bEnabled = !bEnabled;
     }
     
